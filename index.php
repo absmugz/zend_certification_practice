@@ -1,4 +1,7 @@
 <?php
+
+include 'functions.php';
+include 'database.php';
 // used for single line comments
 
 //must be repeated for multiply line..
@@ -9,6 +12,16 @@
 used once at the end*/ 
 
 // variables
+
+$obj = new absolom\my_stuff\Foo();
+$objDb = new absolom\my_stuff\Database();
+echo $obj->doAwesomeThings();
+echo $objDb->doAwesomeThings();
+
+$a = 1;
+++$a;
+$a *= $a;
+echo $a-- . '<br>';
 
 echo 'Welcome to Zend Certication pactice' . '<br>';
 $m = 4 % 3;
