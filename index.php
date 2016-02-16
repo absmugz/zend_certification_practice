@@ -1,7 +1,7 @@
 <?php
 
-include 'functions.php';
-include 'database.php';
+require 'functions.php';
+require 'database.php';
 // used for single line comments
 
 //must be repeated for multiply line..
@@ -12,11 +12,17 @@ include 'database.php';
 used once at the end*/ 
 
 // variables
+use \absolom\my_stuff\Database;
+use \absolom\my_stuff\Foo;
+$foo = new Database();
+$fooF = new Foo();
+$foo->doAwesomeThings();
+$fooF->doAwesomeThings();
+//$obj = new absolom\my_stuff\Foo();
+//$objDb = new absolom\my_stuff\Database();
+//echo $obj->doAwesomeThings();
+//echo $objDb->doAwesomeThings();
 
-$obj = new absolom\my_stuff\Foo();
-$objDb = new absolom\my_stuff\Database();
-echo $obj->doAwesomeThings();
-echo $objDb->doAwesomeThings();
 
 $a = 1;
 ++$a;
