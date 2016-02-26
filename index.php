@@ -77,9 +77,54 @@ for ($z = 0; $z <= 10; $z++) {
 
 
 $colors = array("red", "green", "blue", "yellow");
+$arrlength = count($colors);
 
-foreach ($colors as $value) {
-    echo "$value <br>";
+
+for($x = 0; $x < $arrlength; $x++) {
+    echo $colors[$x];
+    echo "<br>";
 }
+
+//PHP Associative Arrays
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+echo "Peter is " . $age['Peter'] . " years old.";
+
+//Loop Through an Associative Array
+
+foreach ($age as $x => $x_value) {
+	
+	echo "Key=" . $x . ", Value=" . $x_value;
+	echo "<br>";
+	
+	
+}
+
+
+//PHP - Multidimensional Arrays
+
+//PHP - Two-dimensional Arrays
+
+$cars = array
+  (
+  array("Volvo",22,18),
+  array("BMW",15,13),
+  array("Saab",5,2),
+  array("Land Rover",17,15)
+  );
+  
+$Cararrlength = count($cars);
+
+
+for ($row = 0; $row < $Cararrlength; $row++) {
+  echo "<p><b>Row number $row</b></p>";
+  echo "<ul>";
+  for ($col = 0; $col < 3; $col++) {
+    echo "<li>".$cars[$row][$col]."</li>";
+  }
+  echo "</ul>";
+}
+
+
 
 ?>
