@@ -125,10 +125,19 @@ for ($row = 0; $row < $Cararrlength; $row++) {
   echo "</ul>";
 }
 
-echo dirname(__FILE__);
+//echo dirname(__FILE__);
 
-$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
-echo fread($myfile,filesize("webdictionary.txt"));
-fclose($myfile);
+//$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+//echo fread($myfile,filesize("webdictionary.txt"));
+//fclose($myfile);
+
+class MyClass {
+public $prop1 = "I'm a class proprty";
+}
+
+$obj = new MyClass();
+
+//var_dump($obj);
+echo $obj->prop1;
 
 ?>
