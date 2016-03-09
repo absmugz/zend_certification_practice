@@ -189,5 +189,32 @@ function sum($x,$y){
 echo sum(3,2) . "<br>";
 echo sum(5, 10) . "<br>";
 echo sum(7, 13) . "<br>";
-echo sum(2, 4);
+echo sum(2, 4) . "<br>";
+
+//Classes
+class MyClass {
+	
+public $prop1 = "I'm a class property";
+
+public function setProperty($newval){
+$this->prop1 = $newval;
+}
+
+public function getProperty() {
+return $this->prop1 . "<br />";
+}
+
+}
+
+$obj = new MyClass();
+$obj2 = new MyClass();
+
+echo $obj->getProperty();
+echo $obj2->getProperty();
+
+$obj->setProperty("Son! You're close to becoming a developer");
+$obj2->setProperty("Son! Welldone!");
+echo $obj->getProperty();
+echo $obj2->getProperty();
+
 ?>
