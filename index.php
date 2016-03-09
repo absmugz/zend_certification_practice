@@ -126,6 +126,7 @@ for ($row = 0; $row < $Cararrlength; $row++) {
 }
 
 //echo dirname(__FILE__);
+
 /*
 $myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
 echo fread($myfile,filesize("webdictionary.txt"));
@@ -193,7 +194,17 @@ echo sum(2, 4) . "<br>";
 
 //Classes
 class MyClass {
-	
+
+public function __construct()
+{
+      echo 'The class "', __CLASS__, '" was initiated!<br />';
+}
+
+public function __destruct()
+{
+      echo 'The class "', __CLASS__, '" was destroyed.<br />';
+}
+  
 public $prop1 = "I'm a class property";
 
 public function setProperty($newval){
@@ -216,5 +227,26 @@ $obj->setProperty("Son! You're close to becoming a developer");
 $obj2->setProperty("Son! Welldone!");
 echo $obj->getProperty();
 echo $obj2->getProperty();
+
+//$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+//echo fread($myfile,filesize("webdictionary.txt"));
+//fclose($myfile);
+
+//Using Class Inheritance
+
+class MyOtherClass extends MyClass {
+
+public function newMethod()
+  {
+      echo "From a new method in " . __CLASS__ . ".<br />";
+  }
+  
+}
+
+$obj3 = new MyOtherClass();
+echo $obj3->newMethod();
+$obj3->setProperty("Son! this is impressive");
+echo $obj3->getProperty();
+
 
 ?>
