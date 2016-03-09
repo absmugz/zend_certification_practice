@@ -125,10 +125,69 @@ for ($row = 0; $row < $Cararrlength; $row++) {
   echo "</ul>";
 }
 
-echo dirname(__FILE__);
-
+//echo dirname(__FILE__);
+/*
 $myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
 echo fread($myfile,filesize("webdictionary.txt"));
 fclose($myfile);
+*/
 
+//Create a User Defined Function in PHP
+
+/*
+function functionName() {
+    code to be executed;
+}
+*/
+
+function writeMsg(){
+	echo 'Hello world!'.'<br>';
+}
+
+writeMsg();
+
+//PHP Function Arguments
+
+function familyName($fname){
+echo "$fname Mugwagwa.<br>";
+}
+
+familyName('Absolom');
+familyName('Makabongwe');
+familyName('Alison');
+
+//The following example has a function with two arguments ($fname and $year):
+
+function familyNameYear($fname,$year){
+echo "$fname Mugwagwa. Born in $year<br> ";
+}
+
+familyNameYear('Absolom','1985');
+familyNameYear('Makabongwe','1984');
+familyNameYear('Alison','2015');
+
+//PHP Default Argument Value
+//The following example shows how to use a default parameter. If we call the function setHeight() without arguments it takes the default value as argument:
+
+function setHeight($minHeight = 50) {
+	echo "The height is : $minHeight <br>";
+}
+
+setHeight(350);
+setHeight(250);
+setHeight(150);
+setHeight(100);
+setHeight();
+
+//PHP Functions - Returning values
+//To let a function return a value, use the return statement:
+function sum($x,$y){
+	$z = $x + $y;
+	return $z;
+}
+
+echo sum(3,2) . "<br>";
+echo sum(5, 10) . "<br>";
+echo sum(7, 13) . "<br>";
+echo sum(2, 4);
 ?>
