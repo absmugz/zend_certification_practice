@@ -236,17 +236,145 @@ echo $obj2->getProperty();
 
 class MyOtherClass extends MyClass {
 
+  public function __construct()
+  {
+	  /*
+	  Preserving Original Method Functionality While Overwriting Methods
+To add new functionality to an inherited method while keeping the original method intact, use the parent keyword with the scope resolution operator (::):
+	  */
+	  
+      parent::__construct(); // Call the parent class's constructor
+      echo "A new constructor in " . __CLASS__ . ".<br />";
+  }
+  
 public function newMethod()
   {
       echo "From a new method in " . __CLASS__ . ".<br />";
   }
   
+public function setProperty($newval, $newval2){
+	
+$this->prop1 = $newval ." ". $newval2;
+}
+  
 }
 
 $obj3 = new MyOtherClass();
 echo $obj3->newMethod();
-$obj3->setProperty("Son! this is impressive");
+$obj3->setProperty("Son! this is impressive", "You have now overwritten a class");
 echo $obj3->getProperty();
+
+/**
+
+Reason 1: Ease of Implementation
+
+"While it may be daunting at first, OOP actually provides an easier approach to dealing with data."
+
+While it may be daunting at first, OOP actually provides an easier approach to dealing with data. Because an object can store data internally, variables don't need to be passed from function to function to work properly.
+
+Also, because multiple instances of the same class can exist simultaneously, dealing with large data sets is infinitely easier. For instance, imagine you have two people's information being processed in a file. They need names, occupations, and ages.
+The Procedural Approach
+
+Here's the procedural approach to our example:
+
+ **/
+ 
+function changeJob($person, $newjob) { 
+	  $person['job'] = $newjob; // Change the person's job
+	 return $person;
+}
+
+function happyBirthday($person)
+{
+  ++$person['age']; // Add 1 to the person's age
+  return $person;
+}
+
+$person1 = array(
+  'name' => 'Tom',
+  'job' => 'Button-Pusher',
+  'age' => 34
+);
+ 
+$person2 = array(
+  'name' => 'John',
+  'job' => 'Lever-Puller',
+  'age' => 41
+);
+
+// Output the starting values for the people
+echo "<pre>Person 1: ", print_r($person1, TRUE), "</pre>";
+echo "<pre>Person 2: ", print_r($person2, TRUE), "</pre>";
+
+// Tom got a promotion and had a birthday
+$person1 = changeJob($person1, 'Box-Mover');
+$person1 = happyBirthday($person1);
+
+// John just had a birthday
+$person2 = happyBirthday($person2);
+ 
+// Output the new values for the people
+echo "<pre>Person 1: ", print_r($person1, TRUE), "</pre>";
+echo "<pre>Person 2: ", print_r($person2, TRUE), "</pre>";
+
+/**
+
+While this code isn't necessarily bad, there's a lot to keep in mind while coding. The array of the affected person's attributes must be passed and returned from each function call, which leaves margin for error.
+
+To clean up this example, it would be desirable to leave as few things up to the developer as possible. Only absolutely essential information for the current operation should need to be passed to the functions.
+
+This is where OOP steps in and helps you clean things up.
+The OOP Approach
+
+Here's the OOP approach to our example:
+
+ **/
+ 
+
+ 
+class Person
+{
+  private $_name;
+  private $_job;
+  private $_age;
+ 
+  public function __construct($name, $job, $age)
+  {
+      $this->_name = $name;
+      $this->_job = $job;
+      $this->_age = $age;
+  }
+ 
+  public function changeJob($newjob)
+  {
+      $this->_job = $newjob;
+  }
+ 
+  public function happyBirthday()
+  {
+      ++$this->_age;
+  }
+}
+ 
+// Create two new people
+$person1 = new Person("Tom", "Button-Pusher", 34);
+$person2 = new Person("John", "Lever Puller", 41);
+ 
+// Output their starting point
+echo "<pre>Person 1: ", print_r($person1, TRUE), "</pre>";
+echo "<pre>Person 2: ", print_r($person2, TRUE), "</pre>";
+ 
+// Give Tom a promotion and a birthday
+$person1->changeJob("Box-Mover");
+$person1->happyBirthday();
+ 
+// John just gets a year older
+$person2->happyBirthday();
+ 
+// Output the ending values
+echo "<pre>Person 1: ", print_r($person1, TRUE), "</pre>";
+echo "<pre>Person 2: ", print_r($person2, TRUE), "</pre>";
+ 
 
 
 ?>
