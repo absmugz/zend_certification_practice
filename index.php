@@ -375,6 +375,41 @@ $person2->happyBirthday();
 echo "<pre>Person 1: ", print_r($person1, TRUE), "</pre>";
 echo "<pre>Person 2: ", print_r($person2, TRUE), "</pre>";
  
+//passing varibles by reference
+//PHP: Pass by reference vs. Pass by value
+function pass_by_value($stack) {
+ array_push($stack, 4, 5);
+}
 
+$stack = array(1,2,3);
+//array_push($stack, 4, 5);
+pass_by_value($stack);
+
+foreach ($stack as $elem) {
+  print "<br>$elem";
+}
+
+/*
+The code above prints 1, 2, 3. This is because the array is passed as value. 
+*/
+
+function pass_by_reference(&$stack) {
+ array_push($stack, 4, 5);
+}
+
+$stacked = array(1,2,3);
+//array_push($stack, 4, 5);
+pass_by_reference($stacked);
+
+foreach ($stacked as $elem) {
+  print "<br>$elem";
+}
+
+/*
+ The code above prints 1, 2, 3, 4, 5. This is because the array is passed as reference, meaning that the function (pass_by_reference) doesn't manipulate a copy of the variable passed, but the actual variable itself. In order to make a variable be passed by reference, it must be declared with a preceeding ampersand (&) in the function's declaration. 
+ 
+difference between passing argument through reference (&$) and by $ is that when you pass argument through reference you work on original variable, means if you change it inside your function it's going to be changed outside of it as well, if you pass argument as a copy, function creates copy instance of this variable, and work on this copy, so if you change it in the function it won't be changed outside of it.
+
+*/
 
 ?>
