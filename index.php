@@ -1,8 +1,16 @@
 <?php
-
+ //phpinfo();
 require 'functions.php';
 require 'database.php';
 // used for single line comments
+/*
+// Show all information, defaults to INFO_ALL
+phpinfo();
+
+// Show just the module information.
+// phpinfo(8) yields identical results.
+
+phpinfo(INFO_MODULES);
 
 //must be repeated for multiply line..
 
@@ -202,7 +210,7 @@ public function __construct()
 
 public function __destruct()
 {
-      echo 'The class "', __CLASS__, '" was destroyed.<br />';
+      //echo 'The class "', __CLASS__, '" was destroyed.<br />';
 }
   
 public $prop1 = "I'm a class property";
@@ -252,16 +260,13 @@ public function newMethod()
       echo "From a new method in " . __CLASS__ . ".<br />";
   }
   
-public function setProperty($newval, $newval2){
-	
-$this->prop1 = $newval ." ". $newval2;
-}
+
   
 }
 
 $obj3 = new MyOtherClass();
 echo $obj3->newMethod();
-$obj3->setProperty("Son! this is impressive", "You have now overwritten a class");
+$obj3->setProperty("Son! this is impressive");
 echo $obj3->getProperty();
 
 /**
@@ -411,5 +416,142 @@ foreach ($stacked as $elem) {
 difference between passing argument through reference (&$) and by $ is that when you pass argument through reference you work on original variable, means if you change it inside your function it's going to be changed outside of it as well, if you pass argument as a copy, function creates copy instance of this variable, and work on this copy, so if you change it in the function it won't be changed outside of it.
 
 */
+
+define("GREETING","Hello you! How are you today?");
+echo constant("GREETING");
+
+define('CONSTANT', 1);
+define('_CONSTANT', 1);
+define('EMPTY', '');
+
+$a = array(
+         1 => 'php',
+          'Hypertext',
+          'Preprocessor',
+           'widely used' => 
+            array(
+                           'general' => 'purpose',
+                            'scripting' => 'language',
+                            'that' => 'was',
+                            'originally' => 
+                             array(
+                                            5 => 'designed',
+                                            9 => 'for',
+                                            'Web development',
+                                             4 => 'purpose',
+                                     )
+                    )
+            );
+ 
+//write code here  
+echo '<pre>';
+print_r($a);
+echo '</pre>';
+
+echo $a['widely used']['originally'][10];
+
+$array1 = array ('a' => 20, 30, 35);
+$array2 = array ('a' => 20, 35, 30);
+
+$array3 =array_intersect_assoc($array1,$array2);
+
+echo '<pre>';
+print_r($array3);
+echo '</pre>';
+
+$dom = new DOMDocument();
+$dom->load('xml/simple.xml');
+ 
+$a = $dom->documentElement;
+echo '<pre>';
+print_r($a);
+echo '</pre>';
+
+//echo strtotime("january 1, 1901"); 
+//Php date functions
+$today = date('l d-m-y h:i:s');
+print $today . '<br>';
+
+//regular expressions
+
+if (preg_match("/ell/", "Hello Wolrd!", $matches)) {
+echo "Match was found <br />";
+echo $matches[0] . '<br/>';
+}
+
+//Nested for loops
+
+for ($x = 1; $x <= 2; $x++) {
+	for ($y = 1; $y <= 3; $y++) {
+		if($x == $y)continue;
+		print("x = $x y = $y");
+		}
+}
+
+//Variable casting
+
+ var_dump( (bool) 5.8 );
+ 
+ $x =25;
+    while($x<10)
+    {
+        $x--;
+    }
+    print ($x); 
+//$a = `ls -l`;
+
+//echo $a;
+
+//define('FOO', 10);
+
+//$array = array(10 => FOO,"FOO" => 20);
+//echo $array[FOO];
+//print $array[$array[FOO]] * $array["FOO"];
+
+function b($a = 4)
+{
+ $a = $a / 2;
+ return $a;
+}
+$a = 10;
+b($a);
+echo b($a) . '<br>';
+echo 0x33, ' birds sit on ', 022, ' trees.' . '<br>';
+
+$xml = simplexml_load_file('xml/simple.xml') or die('Error cannot create object');
+print_r($xml);
+
+
+//Strings
+
+//Heredoc and Nowdoc
+
+$sausage = 'sausage';
+
+$heredocs =  <<<MYSTRING
+this is is problem
+you suck
+$sausage
+at the same
+MYSTRING;
+
+$Nowdoc =  <<<'MYSTRINGNOW'
+this is is problem
+you suck
+$sausage
+at the same
+MYSTRINGNOW;
+
+echo $heredocs  . '<br>';
+
+echo $Nowdoc  . '<br>';
+
+$haystack = 'Hello there officer Dibble Sir';
+$needle = 'Dibble';
+$result = strpos($haystack, $needle, -10);
+
+echo $result . '<br>';
+
+
 
 ?>
