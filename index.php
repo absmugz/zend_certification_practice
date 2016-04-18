@@ -546,11 +546,12 @@ echo $heredocs  . '<br>';
 
 echo $Nowdoc  . '<br>';
 
-$haystack = 'Hello there officer Dibble Sir';
-$needle = 'Dibble';
-$result = strpos($haystack, $needle, -10);
 
-echo $result . '<br>';
+
+$myfile = fopen('newfile.txt','w') or die('Unable to open file!');
+$txt = "John Doe\n";
+fwrite($myfile, $txt);
+fclose($myfile);
 
 
 
